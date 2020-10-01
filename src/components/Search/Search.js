@@ -7,10 +7,6 @@ class Search extends Component {
     giphyData: [],
   };
 
-  state = {
-    newGif: '',
-  };
-
   componentDidMount = () => {
     axios({
       method: 'GET',
