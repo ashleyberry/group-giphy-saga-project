@@ -1,0 +1,23 @@
+[x] set up database
+[ ] create favorites table (id, url, category_id)
+[ ] add API key to .env file
+
+
+SEARCH VIEW
+-----
+[ ] search input with submit button
+    [ ] Create input field 
+    [ ] GET request plumbed in ( eventually in saga not fully functional, just sending logs)
+    [ ] display result on DOM
+    [ ] favorites button ( POST event to send favorite to DB) 
+
+Favorites View
+-----
+    [ ] GET request to pull images from DB
+    [ ] Map those to the dom
+    [ ] catergory selector (dropdown... fancy)
+    [ ] Submit button (call a put request to DB to add category_id to the item(smuggle value = in the selector))
+
+
+
+  
