@@ -1,3 +1,26 @@
+
+[]split up work
+    - discuss roles/what we're comfortable with
+gada 
+- strenths: dispatches
+- wanting to try out saga's and database some more
+-weaknesses: SAGA and API
+
+jake
+- strenths:  routing and saga requests/ API integration
+-okay: Sending data to DB
+-weaknesses: redux state stuff is hard when we get a on of state arrays going
+
+ashley
+- strenths: dispatches, sagas, DOM manipulation, db, connecting pages
+-weaknesses: redux (but I'll still do it if need be), reducerssssss, API integration
+
+gabe 
+- strenths: dispatch, vanilla js/ jsx 
+- okay: SAGAS, reduxState, db stuff, API , setting up redux 
+-weaknesses: local state, props manangement 
+
+
 [x] set up database
 [ ] create favorites table (id, url, category_id)
 [ ] add API key to .env file
@@ -5,11 +28,13 @@
 
 SEARCH VIEW
 -----
-[ ] search input with submit button
-    [ ] Create input field 
-    [ ] GET request plumbed in ( eventually in saga not fully functional, just sending logs)
-    [ ] display result on DOM
+[x] search input with submit button - build local state - smash
+    [x] Create input field 
+    [ ] Setup REDUX state -GABE
+    [ ] GET request plumbed in ( eventually in saga not fully functional, just sending logs) _GADA
+    [ ] display result on DOM  -JAKE
     [ ] favorites button ( POST event to send favorite to DB) 
+[ ] Complete the GET router to giphy API -JAKE
 
 Favorites View
 -----

@@ -4,7 +4,7 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    // return all categories
+    // return all categories "funny cohort cartoon nsfw meme"
     const queryText = `SELECT * FROM category ORDER BY name ASC`;
     pool.query(queryText)
         .then( (result) => {
