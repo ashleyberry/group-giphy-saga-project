@@ -7,7 +7,7 @@ gada
 -weaknesses: SAGA and API
 
 jake
-- strenths:  routing and saga requests/ API integration
+- strengths:  routing and saga requests/ API integration
 -okay: Sending data to DB
 -weaknesses: redux state stuff is hard when we get a on of state arrays going
 

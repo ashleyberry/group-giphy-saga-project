@@ -1,43 +1,64 @@
 import React, { Component } from 'react';
-
+import axios from 'axios';
+import { connect } from 'react-redux';
 
 class Search extends Component {
+  state = {
+    giphyData: [],
+  };
 
   state = {
-    newGif: ''
-  }
+    newGif: '',
+  };
 
   componentDidMount = () => {
-    this.getGif()
-  }
+    axios({
+      method: 'GET',
+      url: '/api/search',
+    })
+      .then((res) => {
+        console.log('res is', res);
 
-  getGif = () => {
-    console.log( 'in getGIF' )
-    // this.props.dispatch({
-    //   type: 'FETCH_GIF' ???
-    // })
-  }
+        this.setState({
+          giphyData: res.data.data,
+        });
+      })
+      .catch((err) => {
+        console.log('error on client side');
 
-  handleChangeFor = ( event ) => {
-    console.log( 'in handleChangeFor:', event.target.value );
+        console.error(err);
+      });
+  };
+
+  handleChangeFor = (event) => {
+    console.log('in handleChangeFor:', event.target.value);
     this.setState({
       newGif: {
         ...this.state.newGif,
-        newGif: event.target.value
-      }
+        newGif: event.target.value,
+      },
     });
-}
+  };
 
   render() {
     return (
       <div>
         <h1>We're in Search!</h1>
-        <input required type= "text" placeholder="Search for GIF" onChange={( event ) => this.handleChangeFor( event )}></input>
-        <button onClick={ this.getGif }>Submit</button>
+        <input
+          required
+          type='text'
+          placeholder='Search for GIF'
+          onChange={(event) => this.handleChangeFor(event)}
+        ></input>
+        <button onClick={this.getGif}>Submit</button>
+        {this.state.giphyData.map((item) => (
+          <img src={item.images.fixed_width_small.url} />
+        ))}
       </div>
     );
   }
-  
 }
-
-export default Search;
+const mapStateToProps = (reduxState) => ({
+  reduxState,
+});
+export default connect(mapStateToProps)(Search);
