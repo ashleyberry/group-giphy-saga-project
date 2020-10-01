@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
     params: {
       api_key: process.env.GIPHY_API_KEY,
       limit: 10,
-      q: 'cats',
+      q: req.body,
     },
   })
     .then((response) => {

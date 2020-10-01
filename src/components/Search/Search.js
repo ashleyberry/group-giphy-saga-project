@@ -5,16 +5,17 @@ import { connect } from 'react-redux';
 class Search extends Component {
   state = {
     giphyData: [],
-  };
-
-  state = {
-    newGif: '',
+    newGif: {},
   };
 
   componentDidMount = () => {
+    this.getGif();
+  };
+  getGif = () => {
     axios({
       method: 'GET',
       url: '/api/search',
+      data: this.state.newGif,
     })
       .then((res) => {
         console.log('res is', res);
@@ -29,7 +30,6 @@ class Search extends Component {
         console.error(err);
       });
   };
-
   handleChangeFor = (event) => {
     console.log('in handleChangeFor:', event.target.value);
     this.setState({
@@ -38,6 +38,7 @@ class Search extends Component {
         newGif: event.target.value,
       },
     });
+    console.log('this.state', this.state);
   };
 
   render() {

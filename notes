@@ -23,7 +23,7 @@ gabe
 
 [x] set up database
 [ ] create favorites table (id, url, category_id)
-[ ] add API key to .env file
+[x] add API key to .env file
 
 
 SEARCH VIEW
