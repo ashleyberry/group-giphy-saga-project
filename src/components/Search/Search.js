@@ -7,6 +7,10 @@ class Search extends Component {
     giphyData: [],
   };
 
+  state = {
+    newGif: '',
+  };
+
   componentDidMount = () => {
     axios({
       method: 'GET',
@@ -26,14 +30,27 @@ class Search extends Component {
       });
   };
 
+  handleChangeFor = (event) => {
+    console.log('in handleChangeFor:', event.target.value);
+    this.setState({
+      newGif: {
+        ...this.state.newGif,
+        newGif: event.target.value,
+      },
+    });
+  };
+
   render() {
     return (
       <div>
         <h1>We're in Search!</h1>
-
-        <input required type='text' placeholder='Search for GIF'></input>
-        <button onClick={this.getNewGif}>Submit</button>
-        <br></br>
+        <input
+          required
+          type='text'
+          placeholder='Search for GIF'
+          onChange={(event) => this.handleChangeFor(event)}
+        ></input>
+        <button onClick={this.getGif}>Submit</button>
         {this.state.giphyData.map((item) => (
           <img src={item.images.fixed_width_small.url} />
         ))}
