@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import {connect} from 'react-redux';
 
 class Search extends Component {
 
@@ -9,9 +9,10 @@ class Search extends Component {
 
   getGif = () => {
     console.log( 'in getGIF' )
-    // this.props.dispatch({
-    //   type: 'FETCH_GIF' ???
-    // })
+    this.props.dispatch({
+      type: 'FETCH_GIF',
+      payload: 'GIF',
+    })
   }
 
   render() {
@@ -23,7 +24,6 @@ class Search extends Component {
       </div>
     );
   }
-  
 }
 
-export default Search;
+export default connect()(Search);
