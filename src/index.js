@@ -1,3 +1,4 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App/App';
@@ -10,6 +11,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 // Import saga middleware
 import createSagaMiddleware from 'redux-saga';
 import { put, takeEvery } from 'redux-saga/effects';
+
 
 // const initialState = {
 // 	funny: "",
@@ -32,31 +34,36 @@ const gifReducer = (state = [], action) => {
 };
 
 function* placeHolder(action) {
-  console.log('in saga placeHolder:', action);
+
+	console.log("in saga placeHolder:", action);
 }
 
 // main saga function
 function* rootSaga() {
-  yield takeEvery('SET_GIFS', placeHolder);
-  //takeEvery go here
+
+	yield takeEvery("SET_GIFS", placeHolder);
+	//takeEvery go here
+
 }
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
-  combineReducers({ gifReducer }),
-  //Add sagaMiddleware to our store
-  applyMiddleware(sagaMiddleware, logger)
+	combineReducers({ gifReducer }),
+	//Add sagaMiddleware to our store
+	applyMiddleware(sagaMiddleware, logger)
 );
 
 // Pass rootSaga into our sagaMiddleware
 sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('react-root')
+
+	<Provider store={store}>
+		<App />
+	</Provider>,
+	document.getElementById("react-root")
+
 );
 //registerServiceWorker();

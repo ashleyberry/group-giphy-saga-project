@@ -14,6 +14,7 @@ class Search extends Component {
   getGif = () => {
     console.log('want to send', this.state.newGif.newGif);
 
+
     axios({
       method: 'GET',
       url: '/api/search',
