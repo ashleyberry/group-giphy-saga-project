@@ -30,11 +30,11 @@ SEARCH VIEW
 -----
 [x] search input with submit button - build local state - smash
     [x] Create input field 
-    [ ] Setup REDUX state -GABE
-    [ ] GET request plumbed in ( eventually in saga not fully functional, just sending logs) _GADA
-    [ ] display result on DOM  -JAKE
+    [x] Setup REDUX state -GABE
+    [x] GET request plumbed in ( eventually in saga not fully functional, just sending logs) _GADA
+    [x] display result on DOM  -JAKE
     [ ] favorites button ( POST event to send favorite to DB) 
-[ ] Complete the GET router to giphy API -JAKE
+[x] Complete the GET router to giphy API -JAKE
 
 Favorites View
 -----

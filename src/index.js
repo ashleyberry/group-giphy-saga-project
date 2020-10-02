@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 //import registerServiceWorker from "./registerServiceWorker";
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-// import axios from "axios";
+import axios from "axios";
 
 // Import saga middleware
 import createSagaMiddleware from 'redux-saga';
@@ -24,26 +24,30 @@ import { put, takeEvery } from 'redux-saga/effects';
 const gifReducer = (state = [], action) => {
   //PLACEHOLDER STATEMENTS
   if (action.type === 'SET_GIFS') {
-    return action.type;
+    return action.payload;
   }
   // if (action.type === "CLEAR_VALUES") {
   // 	console.log(initialState, state);
   // 	return initialState;
   // }
   return state;
-};
+}; // end gifReducer
 
-function* placeHolder(action) {
-
-	console.log("in saga placeHolder:", action);
-}
+function* getFavoriteSaga(action) {
+	let response = yield axios({
+        method: 'GET',
+        url: '/api/favorite'
+    });
+	console.log("in saga getFavoriteSaga: response.data", response.data);
+	yield put({
+	type: 'SET_GIFS',
+	payload: response.data
+	})
+} // end getFavoriteSaga
 
 // main saga function
 function* rootSaga() {
-
-	yield takeEvery("SET_GIFS", placeHolder);
-	//takeEvery go here
-
+	yield takeEvery("FETCH_FAVORITE", getFavoriteSaga);
 }
 
 // Create sagaMiddleware

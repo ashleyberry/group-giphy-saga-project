@@ -35,6 +35,7 @@ class Search extends Component {
         console.error(err);
       });
   };
+  
   handleChangeFor = (event) => {
     console.log('in handleChangeFor:', event.target.value);
     this.setState({
