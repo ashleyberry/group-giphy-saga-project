@@ -57,7 +57,15 @@ class Search extends Component {
         ></input>
         <button onClick={this.getGif}>Submit</button>
         {this.state.giphyData.map((item) => (
-          <img src={item.images.fixed_width_small.url} />
+          <div>
+            <img
+              height='200'
+              width='200'
+              src={item.images.downsized_medium.url}
+            />
+
+            <button>Favorite</button>
+          </div>
         ))}
       </div>
     );
