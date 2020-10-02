@@ -5,12 +5,22 @@ import { connect } from 'react-redux';
 class Search extends Component {
   state = {
     giphyData: [],
+    newGif: {},
   };
 
   componentDidMount = () => {
+    this.getGif();
+  };
+  getGif = () => {
+    console.log('want to send', this.state.newGif.newGif);
+
+
     axios({
       method: 'GET',
       url: '/api/search',
+      params: {
+        search: this.state.newGif.newGif,
+      },
     })
       .then((res) => {
         console.log('res is', res);
@@ -25,7 +35,6 @@ class Search extends Component {
         console.error(err);
       });
   };
-
   handleChangeFor = (event) => {
     console.log('in handleChangeFor:', event.target.value);
     this.setState({
@@ -34,6 +43,7 @@ class Search extends Component {
         newGif: event.target.value,
       },
     });
+    console.log('this.state', this.state);
   };
 
   render() {
@@ -48,7 +58,15 @@ class Search extends Component {
         ></input>
         <button onClick={this.getGif}>Submit</button>
         {this.state.giphyData.map((item) => (
-          <img src={item.images.fixed_width_small.url} />
+          <div>
+            <img
+              height='200'
+              width='200'
+              src={item.images.downsized_medium.url}
+            />
+
+            <button>Favorite</button>
+          </div>
         ))}
       </div>
     );
