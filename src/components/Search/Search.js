@@ -12,10 +12,14 @@ class Search extends Component {
     this.getGif();
   };
   getGif = () => {
+    console.log('want to send', this.state.newGif.newGif);
+
     axios({
       method: 'GET',
       url: '/api/search',
-      data: this.state.newGif,
+      params: {
+        search: this.state.newGif.newGif,
+      },
     })
       .then((res) => {
         console.log('res is', res);
